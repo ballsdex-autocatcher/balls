@@ -32,7 +32,6 @@ jobs:
 
     - name: Check for changes and commit
       run: |
-        ls -R
         git config --global user.name "${{ env.author }}"
         git config --global user.email "username@users.noreply.github.com"
 
