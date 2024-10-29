@@ -35,9 +35,11 @@ jobs:
         git config --global user.name "${{ env.author }}"
         git config --global user.email "username@users.noreply.github.com"
 
-        if ! git diff --quiet; then git stash; fi
+        git add -A
+
+        if ! git diff --cached --quiet; then git stash; fi
         git pull --rebase
 
         if git stash list | grep -q 'stash@{0}'; then git stash pop; fi
 
-        git diff --exit-code || (git add -A && git commit -m "${{ env.commit }}" && git push)
+        git diff --cached --exit-code || (git add -A && git commit -m "${{ env.commit }}" && git push)
