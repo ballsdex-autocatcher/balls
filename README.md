@@ -1,2 +1,2 @@
 # Balls
-Ballsdex balls
+Ballsdex balls updater repo.
