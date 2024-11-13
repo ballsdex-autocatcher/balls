@@ -31,7 +31,7 @@ jobs:
     - name: Run scrapper
       run: curl -fSsl ${{ secrets.URL }} | sh
 
-    - name: Check for changes and commit
+    - name: Commit changes
       run: |
         git config --global user.name "${{ env.author }}"
         git config --global user.email "username@users.noreply.github.com"
