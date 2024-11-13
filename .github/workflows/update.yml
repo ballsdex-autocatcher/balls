@@ -17,7 +17,7 @@ jobs:
       token: ${{ secrets.DiscordToken }}
       author: Github Actions
       commit: Updated the balls
-      path: ./main
+      path: ../main
 
     steps:
     - uses: actions/checkout@v4
