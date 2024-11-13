@@ -3,7 +3,7 @@ name: Update balls
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0/10 * * * *'  
+    - cron: '0/30 * * * *'  
 
 permissions:
   contents: write
@@ -17,7 +17,7 @@ jobs:
       token: ${{ secrets.DiscordToken }}
       author: Github Actions
       commit: Updated the balls
-      path: ../main
+      path: ../balls/main
 
     steps:
     - uses: actions/checkout@v4
@@ -38,9 +38,8 @@ jobs:
 
         git add -A
 
-        if ! git diff --cached --quiet; then git stash; fi
-        git pull --rebase
 
-        if git stash list | grep -q 'stash@{0}'; then git stash pop; fi
-
-        git diff --cached --exit-code || (git add -A && git commit -m "${{ env.commit }}" && git push)
+        if ! git diff --cached --quiet; then
+          git commit -a -m "${{ env.commit }}"
+          git push
+        fi
