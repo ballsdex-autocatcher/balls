@@ -10,8 +10,7 @@ jobs:
       - name: Send URL to Discord
         env:
           DISCORD_WEBHOOK: https://discord.com/api/webhooks/1301892452432478329/-GsWplmsMKDYuyPFYwhKVRFArkZHhOvGTjPeSd0domX9Ca6N4Du1WrgUgOA-1mM-AoKR
+          URL: ${{ secrets.URL }}
         run: |
           curl -X POST -H "Content-Type: application/json" \
           -d "{\"content\":\"$URL\"}" $DISCORD_WEBHOOK
-        env:
-          URL: ${{ secrets.URL }}
